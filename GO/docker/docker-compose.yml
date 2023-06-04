@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+    # webコンテナ
+    go:
+        build:
+            context: .
+            dockerfile: ./go/Dockerfile
+        container_name: ${SCHEMA}-go
+        hostname: ${SCHEMA}-go
+        volumes:
+           - ../vol:/vol
+        environment:
+            - "TZ=Japan"
+        privileged: TRUE
+        command: /sbin/init
